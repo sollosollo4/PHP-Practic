@@ -49,3 +49,7 @@ a, a:visited {
 .link:hover {
     text-decoration: underline;
 }
+
+.small-text{
+    font-size: small !important;
+}
