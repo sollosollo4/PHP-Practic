@@ -2,26 +2,12 @@
 
 namespace Controllers;
 
+use Exceptions\NotFoundException;
 use Models\Articles\Article;
 use Models\Users\User;
-use Services\Db;
-use View\View;
-use Exceptions\NotFoundException;
 
-
-class ArticlesController
+class ArticlesController extends AbstractController
 {
-    /** @var View */
-    private $view;
-
-    /** @var Db */
-    private $db;
-
-    public function __construct()
-    {
-        $this->view = new View(__DIR__ . '/../../templates');
-        $db = Db::getInstance();
-    }
 
     public function view(int $articleId)
     {
