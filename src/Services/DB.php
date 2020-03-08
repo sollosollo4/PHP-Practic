@@ -20,6 +20,7 @@ class Db
             $dbOptions['user'], $dbOptions['password'] 
         );
         $this->pdo ->exec('SET NAMES UTF8');
+        
     }
 
     public function query(string $sql, array $params = [], string $className = 'stdClass'): ?array
