@@ -5,7 +5,7 @@ return [
     '~^articles/(\d+)$~' => [\Controllers\ArticlesController::class, 'view'],
     '~^articles/(\d+)/edit$~' => [\Controllers\ArticlesController::class, 'edit'],
     '~^articles/add$~' => [\Controllers\ArticlesController::class, 'add'],
-    '~^users/register$~' => [   \Controllers\UsersController::class, 'signUp'],
+    '~^users/register$~' => [\Controllers\UsersController::class, 'signUp'],
 ];
 
 ?>
