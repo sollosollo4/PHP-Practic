@@ -104,6 +104,7 @@ abstract class ActiveRecordEntity{
         $sql = 'UPDATE `' . static::getTableName() . '` SET ' . implode(', ', $columns2params) . ' WHERE id = ' . $this->id;
         $db = DateBase::getInstance();
         $db->query($sql, $params2values, static::class);
+        var_dump();
     }
 
     private function insert(array $mappedProperties): void
