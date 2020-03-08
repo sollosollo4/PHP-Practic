@@ -45,6 +45,11 @@ class DateBase{
 
         return self::$instance;
     }
+
+    public function getLastInsertId(): int
+    {
+        return (int) $this->PDO->lastInsertId();
+    }
 }
 
 ?>

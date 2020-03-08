@@ -104,13 +104,35 @@ abstract class ActiveRecordEntity{
         $sql = 'UPDATE `' . static::getTableName() . '` SET ' . implode(', ', $columns2params) . ' WHERE id = ' . $this->id;
         $db = DateBase::getInstance();
         $db->query($sql, $params2values, static::class);
-        var_dump();
     }
 
     private function insert(array $mappedProperties): void
     {
+        $filteredProperties = array_filter($mappedProperties);
 
+        $columns = [];
+        $paramsNames = [];
+        $params2values = [];
+        foreach ($filteredProperties as $columnName => $value) {
+            $columns[] = '`' . $columnName. '`';
+            $paramName = ':' . $columnName;
+            $paramsNames[] = $paramName;
+            $params2values[$paramName] = $value;
+        }
+
+        $columns[] = '`created_at`';
+        $paramsNames[] = ':created_at';
+        $params2values[$paramsNames[3]] = date("Y-m-d H:i:s");
+
+        $columnsViaSemicolon = implode(', ', $columns);
+        $paramsNamesViaSemicolon = implode(', ', $paramsNames);
+
+        $sql = 'INSERT INTO ' . static::getTableName() . ' (' . $columnsViaSemicolon . ') VALUES (' . $paramsNamesViaSemicolon . ');';
+
+        $db = DateBase::getInstance();
+        $db->query($sql, $params2values, static::class);
+        $this->id = $db->getLastInsertId();
     }
-}
 
+}
 ?>
