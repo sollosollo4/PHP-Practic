@@ -93,8 +93,6 @@ abstract class ActiveRecordEntity
         $paramsNamesViaSemicolon = implode(', ', $paramsNames);
         $sql = 'INSERT INTO ' . static::getTableName() . ' (' . $columnsViaSemicolon . ') VALUES (' . $paramsNamesViaSemicolon . ');';
 
-        var_dump($sql);
-
         $db = Db::getInstance();
         $db->query($sql, $params2values, static::class);
         $this->id = $db->getLastInsertId();
