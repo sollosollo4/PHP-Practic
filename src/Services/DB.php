@@ -52,8 +52,6 @@ class Db
     {
         return (int) $this->pdo->lastInsertId();
     }
-
-
 }
 
 ?>

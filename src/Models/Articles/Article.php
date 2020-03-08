@@ -6,7 +6,6 @@ use Services\Db;
 use Models\Users\User;
 use Models\ActiveRecordEntity;
 
-
 class Article extends ActiveRecordEntity
 {
     /** @var string */
